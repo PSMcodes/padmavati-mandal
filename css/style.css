@@ -523,7 +523,7 @@
 }
 @media (max-width:600px) {
  .map{
-    width: 350px;
+    width: 450px;
     min-height: 250px;
 }   
 }
