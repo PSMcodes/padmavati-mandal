@@ -517,3 +517,13 @@
 .text-dark{
     font-weight: bold;
 }
+.map{
+   width: 450px;
+    min-height: 250px;
+}
+@media (max-width:600px) {
+ .map{
+    width: 250px;
+    min-height: 250px;
+}   
+}
