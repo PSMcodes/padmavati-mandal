@@ -427,7 +427,6 @@
 
 /*** Testimonial ***/
 .testimonial {
-    background: linear-gradient(rgba(136, 180, 78, .85), rgba(136, 180, 78, .85)), url(../img/testimonial-bg.jpg) center center no-repeat;
     background-size: cover;
 }
 
@@ -510,4 +509,11 @@
 
 .copyright a:hover {
     color: #FFFFFF !important;
+}
+.orcode{
+  max-width: 60%;
+  border-radius: 22px ;  
+}
+.text-dark{
+    font-weight: bold;
 }
