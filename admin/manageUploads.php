@@ -14,47 +14,60 @@ include 'dbconfig.php';
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $alt_text = $_POST['alt_text'];
 
-    // Handle the image upload
-    if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
-        $image = $_FILES['image'];
+    // Check if files were uploaded
+    if (isset($_FILES['images']) && is_array($_FILES['images']['name'])) {
+        $files = $_FILES['images'];
 
-        // Define the upload directory and file path
-        $upload_dir = 'uploads/';
-        $image_path = $upload_dir . basename($image['name']);
+        // Loop through each file
+        for ($i = 0; $i < count($files['name']); $i++) {
+            if ($files['error'][$i] == 0) {
+                $image = [
+                    'name' => $files['name'][$i],
+                    'tmp_name' => $files['tmp_name'][$i],
+                    'size' => $files['size'][$i],
+                    'type' => $files['type'][$i],
+                    'error' => $files['error'][$i]
+                ];
 
-        // Check if the file is an actual image
-        $imageFileType = strtolower(pathinfo($image_path, PATHINFO_EXTENSION));
-        $check = getimagesize($image['tmp_name']);
-        if ($check !== false) {
-            // Allow only certain file formats
-            $allowed_types = array('jpg', 'jpeg', 'png', 'gif','webp',);
-            if (in_array($imageFileType, $allowed_types)) {
-                // Move the uploaded file to the target directory
-                if (move_uploaded_file($image['tmp_name'], $image_path)) {
-                    // Prepare the SQL statement to insert the image details into the database
-                    $stmt = $conn->prepare("INSERT INTO gallery_images (image_path, alt_text) VALUES (?, ?)");
-                    $stmt->bind_param("ss", $image_path, $alt_text);
+                // Define the upload directory and file path
+                $upload_dir = 'uploads/';
+                $image_path = $upload_dir . basename($image['name']);
 
-                    // Execute the statement
-                    if ($stmt->execute()) {
-                        echo "<div class='alert alert-success text-center'>Image uploaded successfully!</div>";
+                // Check if the file is an actual image
+                $imageFileType = strtolower(pathinfo($image_path, PATHINFO_EXTENSION));
+                $check = getimagesize($image['tmp_name']);
+                if ($check !== false) {
+                    // Allow only certain file formats
+                    $allowed_types = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
+                    if (in_array($imageFileType, $allowed_types)) {
+                        // Move the uploaded file to the target directory
+                        if (move_uploaded_file($image['tmp_name'], $image_path)) {
+                            // Prepare the SQL statement to insert the image details into the database
+                            $stmt = $conn->prepare("INSERT INTO gallery_images (image_path, alt_text) VALUES (?, ?)");
+                            $stmt->bind_param("ss", $image_path, $alt_text);
+
+                            // Execute the statement
+                            if (!$stmt->execute()) {
+                                echo "<div class='alert alert-danger text-center'>Failed to save image details to the database: " . $stmt->error . "</div>";
+                            }
+
+                            // Close the statement
+                            $stmt->close();
+                        } else {
+                            echo "<div class='alert alert-danger text-center'>Failed to move the uploaded file.</div>";
+                        }
                     } else {
-                        echo "<div class='alert alert-danger text-center'>Failed to save image details to the database: " . $stmt->error . "</div>";
+                        echo "<div class='alert alert-danger text-center'>Only JPG, JPEG, PNG, and GIF files are allowed.</div>";
                     }
-
-                    // Close the statement
-                    $stmt->close();
                 } else {
-                    echo "<div class='alert alert-danger text-center'>Failed to move the uploaded file.</div>";
+                    echo "<div class='alert alert-danger text-center'>File is not an image.</div>";
                 }
             } else {
-                echo "<div class='alert alert-danger text-center'>Only JPG, JPEG, PNG, and GIF files are allowed.</div>";
+                echo "<div class='alert alert-danger text-center'>Error uploading file: " . $files['error'][$i] . "</div>";
             }
-        } else {
-            echo "<div class='alert alert-danger text-center'>File is not an image.</div>";
         }
     } else {
-        echo "<div class='alert alert-danger text-center'>No file uploaded or there was an error in the upload.</div>";
+        echo "<div class='alert alert-danger text-center'>No files uploaded or there was an error in the upload.</div>";
     }
 
     // Close the database connection
@@ -87,7 +100,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <form method="POST" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="image">Choose Image</label>
-                        <input type="file" class="form-control-file" id="image" name="image" required multiple>
+                        <input type="file" class="form-control-file" id="image" name="images[]" required multiple>
                     </div>
                     <div class="form-group">
                         <label for="alt_text">Occassion</label>
@@ -99,49 +112,49 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </div>
     </div>
 
-    <div clas<!-- Display Images Grouped by Alt Text -->
-        <div class="row mt-5">
-            <?php
-    // Include database configuration
-    include 'dbconfig.php';
+    <!-- Display Images Grouped by Alt Text -->
+    <div class="row mt-5">
+        <?php
+        // Include database configuration
+        include 'dbconfig.php';
 
-    // Fetch images grouped by alt_text (occasion)
-    $sql = "SELECT id, alt_text, image_path FROM gallery_images ORDER BY alt_text";
-    $result = $conn->query($sql);
+        // Fetch images grouped by alt_text (occasion)
+        $sql = "SELECT id, alt_text, image_path FROM gallery_images ORDER BY alt_text";
+        $result = $conn->query($sql);
 
-    if ($result->num_rows > 0) {
-        $current_alt_text = '';
-        while ($row = $result->fetch_assoc()) {
-            if ($current_alt_text !== $row['alt_text']) {
-                if ($current_alt_text !== '') {
-                    echo "</div></div>"; // Close previous group
+        if ($result->num_rows > 0) {
+            $current_alt_text = '';
+            while ($row = $result->fetch_assoc()) {
+                if ($current_alt_text !== $row['alt_text']) {
+                    if ($current_alt_text !== '') {
+                        echo "</div></div>"; // Close previous group
+                    }
+                    $current_alt_text = $row['alt_text'];
+                    echo "<div class='col-md-12'>";
+                    echo "<h4 class='text-center mt-5'>Occasion: " . htmlspecialchars($current_alt_text) . "</h4>";
+                    echo "<div class='row'>";
                 }
-                $current_alt_text = $row['alt_text'];
-                echo "<div class='col-md-12'>";
-                echo "<h4 class='text-center mt-5'>Occasion: " . htmlspecialchars($current_alt_text) . "</h4>";
-                echo "<div class='row'>";
+
+                $id = $row['id'];
+                $image = $row['image_path'];
+                echo "<div class='col-md-3 mt-2'>";
+                echo "<img src='" . htmlspecialchars($image) . "' class='img-fluid' alt='" . htmlspecialchars($current_alt_text) . "'>";
+                echo "<form method='POST' action='delete_image.php' class='mt-2'>";
+                echo "<input type='hidden' name='image_id' value='" . htmlspecialchars($id) . "'>";
+                echo "<input type='hidden' name='image_path' value='" . htmlspecialchars($image) . "'>";
+                echo "<button type='submit' class='btn btn-danger btn-block'>Delete</button>";
+                echo "</form>";
+                echo "</div>";
             }
-
-            $id = $row['id'];
-            $image = $row['image_path'];
-            echo "<div class='col-md-3 mt-2'>";
-            echo "<img src='" . htmlspecialchars($image) . "' class='img-fluid' alt='" . htmlspecialchars($current_alt_text) . "'>";
-            echo "<form method='POST' action='delete_image.php' class='mt-2'>";
-            echo "<input type='hidden' name='image_id' value='" . htmlspecialchars($id) . "'>";
-            echo "<input type='hidden' name='image_path' value='" . htmlspecialchars($image) . "'>";
-            echo "<button type='submit' class='btn btn-danger btn-block'>Delete</button>";
-            echo "</form>";
-            echo "</div>";
+            echo "</div></div>"; // Close last group
+        } else {
+            echo "<div class='col-md-12 text-center'><p>No images found.</p></div>";
         }
-        echo "</div></div>"; // Close last group
-    } else {
-        echo "<div class='col-md-12 text-center'><p>No images found.</p></div>";
-    }
 
-    // Close the database connection
-    $conn->close();
-    ?>
-        </div>
+        // Close the database connection
+        $conn->close();
+        ?>
+    </div>
 
 </body>
 
