@@ -119,9 +119,17 @@
 
                             $id = $row['id'];
                             $image = $row['image_path'];
-                            echo "<div class='col-md-3 mt-2'>";
-                            echo "<img src='./admin/" . htmlspecialchars($image) . "' class='img-fluid' alt='" . htmlspecialchars($current_alt_text) . "'>";
-                            echo "</div>";
+                            // echo '<div class="row">';
+                            // echo '<div class="col-lg-4 col-md-12 mb-4 mb-lg-0">';
+                            // echo " class='w-100 shadow-1-strong rounded mb-4' alt='" . htmlspecialchars($current_alt_text) . "'>";
+                            // echo "</div>";
+                            // echo "</div>";
+                            echo '<div class="col-lg-3 col-md-12 mb-4 mb-lg-0">
+                                    <img src="./admin/' . htmlspecialchars($image) . '"
+                                    class="w-100 shadow-1-strong rounded mb-4"
+                                    alt="' . htmlspecialchars($current_alt_text) . '"
+                                    />
+                                </div>';
                         }
                         echo "</div></div>"; // Close last group
                     } else {

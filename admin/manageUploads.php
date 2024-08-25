@@ -48,7 +48,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                             // Execute the statement
                             if (!$stmt->execute()) {
-                                echo "<div class='alert alert-danger text-center'>Failed to save image details to the database: " . $stmt->error . "</div>";
+                                echo "<div class='alert alert-danger text-center'>Failed to save image details to the database: " . $stmt->error . "
+    </div>";
                             }
 
                             // Close the statement
