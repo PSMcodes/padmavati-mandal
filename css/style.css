@@ -1,7 +1,7 @@
 /********** Template CSS **********/
 :root {
-    --primary: #88B44E;
-    --secondary: #FB9F38;
+    --primary: #951a04;
+    --secondary: #c26005;
     --light: #F5F8F2;
     --dark: #252C30;
 }
@@ -167,7 +167,7 @@
     bottom: 0;
     display: flex;
     align-items: center;
-    background: rgba(136, 180, 78, .7);
+    background: rgba(181, 61, 1, 0.7);
     z-index: 1;
 }
 
@@ -200,7 +200,7 @@
 }
 
 .page-header {
-    background: linear-gradient(rgba(136, 180, 78, .7), rgba(136, 180, 78, .7)), url(../img/carousel-1.jpg) center center no-repeat;
+    background: linear-gradient(rgba(168, 71, 1, 0.7), rgba(186, 54, 2, 0.7)), url(../img/carousel-1.jpg) center center no-repeat;
     background-size: cover;
 }
 
@@ -290,7 +290,7 @@
 
 /*** About ***/
 .video {
-    background: linear-gradient(rgba(136, 180, 78, .85), rgba(136, 180, 78, .85)), url(../img/video-bg.jpg) center center no-repeat;
+    background: linear-gradient(rgba(233, 84, 3, 0.907), rgba(167, 65, 2, 0.85)), url(../img/video-bg.jpg) center center no-repeat;
     background-size: cover;
 }
 
