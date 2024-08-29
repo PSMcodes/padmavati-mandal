@@ -255,10 +255,17 @@
 
 /*** Products ***/
 .product {
-    background: linear-gradient(rgba(136, 180, 78, .1), rgba(136, 180, 78, .1)), url(../img/product-bg.png) left bottom no-repeat;
-    background-size: auto;
+    background: linear-gradient(rgba(227, 227, 227, 0.773), rgba(237, 237, 237, 0.816)), url(../img/product-bg2.jpg) no-repeat ;
+    background-size: cover;
+    background-position: center center;
 }
-
+@media (max-width:600px) {
+    .product {
+    background: linear-gradient(rgba(227, 227, 227, 0.773), rgba(237, 237, 237, 0.816)), url(../img/product-bg2.jpg) no-repeat ;
+    background-size: cover;
+    background-position: center left;
+    }
+}
 .product-carousel .owl-nav {
     display: flex;
     justify-content: center;
@@ -290,7 +297,7 @@
 
 /*** About ***/
 .video {
-    background: linear-gradient(rgba(233, 84, 3, 0.907), rgba(167, 65, 2, 0.85)), url(../img/video-bg.jpg) center center no-repeat;
+    background: linear-gradient(rgba(233, 84, 3, 0.907), rgba(167, 65, 2, 0.85)), url(../img/download.png) center center no-repeat;
     background-size: cover;
 }
 
