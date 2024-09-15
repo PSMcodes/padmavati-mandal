@@ -74,11 +74,11 @@
         <div id="header-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img class="w-100 d-block mx-auto" src="img/poster1.jpg" alt="Image">
+                    <img class=" d-block mx-auto img-fluid" src="img/poster1.jpg" alt="Image" width="1200px">
 
                 </div>
                 <div class="carousel-item">
-                    <img class="w-100" src="img/poster2.jpg" alt="Image">
+                    <img class="d-block mx-auto img-fluid" src="img/poster2.jpg" alt="Image" width="1200px">
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#header-carousel" data-bs-slide="prev">
@@ -116,7 +116,8 @@
                             <img class="img-fluid bg-white w-100 mb-3 wow fadeIn" data-wow-delay="0.1s"
                                 src="img/WhatsApp Image 2024-09-10 at 13.23.43_fb5bd8a3.jpg" alt="">
                             <img class="img-fluid bg-white w-100 wow fadeIn" data-wow-delay="0.4s"
-                                src="img/WhatsApp Image 2024-09-07 at 3.20.18 PM.jpeg" alt="">
+                                src="img/WhatsApp Image 2024-09-15 at 17.09.56_b9f6007f.jpg" alt="">
+                            <img src="img/" alt="">
                         </div>
                     </div>
                 </div>
@@ -211,24 +212,21 @@
             <!-- Gallery -->
             <div class="row">
                 <div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
-                    <img src="img/gallery1.jpeg"
-                        class="w-100 shadow-1-strong rounded mb-4" alt="Boat on Calm Water" />
+                    <img src="img/gallery1.jpeg" class="w-100 shadow-1-strong rounded mb-4" alt="Boat on Calm Water" />
 
-                    <img src="img/gallery2.jpeg"
-                        class="w-100 shadow-1-strong rounded mb-4" alt="Wintry Mountain Landscape" />
+                    <img src="img/gallery2.jpeg" class="w-100 shadow-1-strong rounded mb-4"
+                        alt="Wintry Mountain Landscape" />
                 </div>
 
                 <div class="col-lg-4 mb-4 mb-lg-0">
-                    <img src="img/gallery3.jpeg"
-                        class="w-100 shadow-1-strong rounded mb-4" alt="Mountains in the Clouds" />
+                    <img src="img/gallery3.jpeg" class="w-100 shadow-1-strong rounded mb-4"
+                        alt="Mountains in the Clouds" />
 
-                    <img src="img/gallery4.jpeg"
-                        class="w-100 shadow-1-strong rounded mb-4" alt="Boat on Calm Water" />
+                    <img src="img/gallery4.jpeg" class="w-100 shadow-1-strong rounded mb-4" alt="Boat on Calm Water" />
                 </div>
 
                 <div class="col-lg-4 mb-4 mb-lg-0">
-                    <img src="img/gallery5.jpeg"
-                        class="w-100 shadow-1-strong rounded mb-4" alt="Waves at Sea" />
+                    <img src="img/gallery5.jpeg" class="w-100 shadow-1-strong rounded mb-4" alt="Waves at Sea" />
 
                     <img src="img/398017809_7247088065301297_2297850193942610194_n.jpg"
                         class="w-100 shadow-1-strong rounded mb-4" alt="Yosemite National Park" />
@@ -250,7 +248,8 @@
                             उपक्रम साठी <span class="text-white">Donation</span></h1>
                         <h5 class="fw-normal lh-base fst-italic text-white mb-5">
                             दिवाळीच्या शुभमुहूर्तावर, पद्मावती मित्र मंडळाने आदिवासी भागात आनंदाचा दिवा प्रज्वलित केला,
-                            आणि पारोळ, माजीवली, तिल्हेर, व करंजोन येथील गरजूंना साड्या व खाऊ वाटप केले.</h5>
+                            आणि पारोळ, माजीवली, तिल्हेर, व करंजोन येथील गरजू महिलांसाठी साड्या आणि लहान मुलांसाठी खाऊचे
+                            वाटप करण्यात आले.</h5>
                         <div class="row g-4 mb-5">
                             <div class="col-sm-6">
                                 <div class="d-flex align-items-center">
@@ -318,82 +317,6 @@
             </div>
         </div>
     </div>
-    <!-- Video Modal End -->
-
-
-    <!-- Store Start -->
-    <!-- <div class="container-xxl py-5">
-        <div class="container">
-            <div class="section-title text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
-                <p class="fs-5 fw-medium fst-italic text-primary">Online Store</p>
-                <h1 class="display-6"></h1>
-            </div>
-            <div class="row g-4">
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="store-item position-relative text-center">
-                        <img class="img-fluid" src="img/download.png" alt="">
-                        <div class="p-4">
-                            <div class="text-center mb-3">
-                                <small class="fa fa-star text-primary"></small>
-                                <small class="fa fa-star text-primary"></small>
-                                <small class="fa fa-star text-primary"></small>
-                                <small class="fa fa-star text-primary"></small>
-                                <small class="fa fa-star text-primary"></small>
-                            </div>
-                            <h4 class="mb-3">Tiitle here</h4>
-                            <p>Aliqu diam amet diam et eos. Clita erat ipsum lorem erat ipsum lorem sit sed</p>
-                        </div>
-                        <div class="store-overlay">
-                            <a href="" class="btn btn-primary rounded-pill py-2 px-4 m-2">More Detail <i class="fa fa-arrow-right ms-2"></i></a>
-                           
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="store-item position-relative text-center">
-                        <img class="img-fluid" src="img/download.png" alt="">
-                        <div class="p-4">
-                            <div class="text-center mb-3">
-                                <small class="fa fa-star text-primary"></small>
-                                <small class="fa fa-star text-primary"></small>
-                                <small class="fa fa-star text-primary"></small>
-                                <small class="fa fa-star text-primary"></small>
-                                <small class="fa fa-star text-primary"></small>
-                            </div>
-                            <h4 class="mb-3">Tiitle here</h4>
-                            <p>Aliqu diam amet diam et eos. Clita erat ipsum lorem erat ipsum lorem sit sed</p>
-                        </div>
-                        <div class="store-overlay">
-                            <a href="" class="btn btn-primary rounded-pill py-2 px-4 m-2">More Detail <i class="fa fa-arrow-right ms-2"></i></a>
-                         
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="store-item position-relative text-center">
-                        <img class="img-fluid" src="img/download.png" alt="">
-                        <div class="p-4">
-                            <div class="text-center mb-3">
-                                <small class="fa fa-star text-primary"></small>
-                                <small class="fa fa-star text-primary"></small>
-                                <small class="fa fa-star text-primary"></small>
-                                <small class="fa fa-star text-primary"></small>
-                                <small class="fa fa-star text-primary"></small>
-                            </div>
-                            <h4 class="mb-3">Tiitle here</h4>
-                        
-                        </div>
-                        <div class="store-overlay">
-                         
-                        </div>
-                    </div>
-                </div>
-               
-            </div>
-        </div>
-    </div> -->
-    <!-- Store End -->
-
 
     <!-- Testimonial Start -->
     <div class="container-fluid testimonial py-5 my-5">
@@ -432,7 +355,7 @@
             </div>
         </div>
     </div>
-    
+
     <!-- Testimonial End -->
 
 
@@ -491,14 +414,14 @@
                     <a href="mailto:padmavatimitramandal8@gmail.com" class="mb-2"><i
                             class="fa fa-envelope text-primary me-3"></i>padmavatimitramandal8@gmail.com</a>
                     <div class="d-flex pt-3">
-                        <a class="btn btn-square btn-primary rounded-circle me-2" href=""><i
-                                class="fab fa-twitter"></i></a>
-                        <a class="btn btn-square btn-primary rounded-circle me-2" href=""><i
+
+                        <a class="btn btn-square btn-primary rounded-circle me-2"
+                            href="https://www.facebook.com/share/YWsaTT2zdqiDBCCm/?mibextid=LQQJ4d"><i
                                 class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-square btn-primary rounded-circle me-2" href=""><i
-                                class="fab fa-youtube"></i></a>
-                        <a class="btn btn-square btn-primary rounded-circle me-2" href=""><i
-                                class="fab fa-linkedin-in"></i></a>
+
+                        <a class="btn btn-square btn-primary rounded-circle me-2"
+                            href="https://www.instagram.com/padmavatichi_aai_bhavani"><i
+                                class="fab fa-instagram"></i></a>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
