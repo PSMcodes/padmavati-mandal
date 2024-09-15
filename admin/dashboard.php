@@ -32,6 +32,7 @@ if (!isset($_SESSION['username'])) {
                 </div>
 
                 <a class="btn btn-dark m-2" href="manageUploads.php">Manage Images</a>
+                <a class="btn btn-dark m-2" href="manageComments.php">Manage Comments</a>
 
                 <a href="logout.php" class="btn btn-danger btn-block">Logout</a>
             </div>

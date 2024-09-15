@@ -403,39 +403,36 @@
                 <h1 class="display-6">आमच्या कार्याचे अनुभव: आपल्या मतांचे महत्त्व</h1>
             </div>
             <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.5s">
-                <div class="testimonial-item p-4 p-lg-5">
-                    <p class="mb-4">"पद्मावती मित्र मंडळाच्या उपक्रमाने माझ्या कुटुंबीयांना एक नवा आशेचा किरण दिला.
-                        त्यांच्या सेवेतून आम्ही नेहमीच प्रेरित होतो."</p>
-                    <div class="d-flex align-items-center justify-content-center">
-                        <img class="img-fluid flex-shrink-0" src="img/testimonial-1.jpg" alt="">
-                        <div class="text-start ms-3">
-                            <h5>— स्नेहा पाटील</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-item p-4 p-lg-5">
-                    <p class="mb-4">"आदिवासी भागातील महिलांसाठी साड्या वाटप आणि मुलांसाठी खाऊ वाटपाचे कार्य अत्यंत
-                        प्रशंसनीय आहे. या उपक्रमामुळे खूप लोकांची जीवनशैली सुधारली आहे."</p>
-                    <div class="d-flex align-items-center justify-content-center">
-                        <img class="img-fluid flex-shrink-0" src="img/testimonial-2.jpg" alt="">
-                        <div class="text-start ms-3">
-                            <h5>— विघ्नेश्वर शेट्टी</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-item p-4 p-lg-5">
-                    <p class="mb-4">"वृद्धाश्रमातील वृद्धांना दिलेल्या सेवेमुळे त्यांच्या चेहऱ्यावर समाधानाचे हसू
-                        पाहायला मिळाले. हे कार्य खरंच प्रेरणादायी आहे."</p>
-                    <div class="d-flex align-items-center justify-content-center">
-                        <img class="img-fluid flex-shrink-0" src="img/testimonial-3.jpg" alt="">
-                        <div class="text-start ms-3">
-                            <h5>— राधिका देशमुख</h5>
-                        </div>
-                    </div>
-                </div>
+                <?php
+                include 'admin/dbconfig.php';
+                // Fetch testimonials from the database
+                $sql = "SELECT user_id, testimonial_text FROM testimonials ORDER BY created_at DESC";
+                $result = $conn->query($sql);
+    
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        // Display each testimonial in the carousel
+                        echo "<div class='testimonial-item p-4 p-lg-5'>";
+                        echo "<p class='mb-4'>\"" . htmlspecialchars($row['testimonial_text']) . "\"</p>";
+                        echo "<div class='d-flex align-items-center justify-content-center'>";
+                        // Optionally add user images if available in database
+                        echo "<div class='text-start ms-3'>";
+                        echo "<h5>— " . htmlspecialchars($row['user_id']) . "</h5>";
+                        echo "</div>";
+                        echo "</div>";
+                        echo "</div>";
+                    }
+                } else {
+                    echo "<div class='text-center'><p>No testimonials found.</p></div>";
+                }
+    
+                // Close the database connection
+                $conn->close();
+                ?>
             </div>
         </div>
     </div>
+    
     <!-- Testimonial End -->
 
 
