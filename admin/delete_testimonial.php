@@ -12,7 +12,7 @@ if (!isset($_SESSION['username'])) {
 include 'dbconfig.php';
             $testimonial_id = $_POST['testimonial_id'];
             $stmt = $conn->prepare("DELETE FROM testimonials WHERE id = ?");
-            $stmt->bind_param("i", $image_id);
+            $stmt->bind_param("i", $testimonial_id);
 
             if ($stmt->execute()) {
                 echo "<div class='alert alert-success text-center'>Image deleted successfully!</div>";
@@ -23,6 +23,6 @@ include 'dbconfig.php';
             
 
 // Redirect back to the upload page
-header("Location: manageUploads.php");
+header("Location: manageComments.php");
 exit();
 ?>
