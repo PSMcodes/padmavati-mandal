@@ -80,6 +80,9 @@
                 <div class="carousel-item">
                     <img class="w-100" src="img/poster2.jpg" alt="Image">
                 </div>
+                <div class="carousel-item">
+                    <img class="w-100" src="img/poster3.jpg" alt="Image">
+                </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#header-carousel" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
