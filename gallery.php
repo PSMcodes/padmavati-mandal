@@ -46,7 +46,7 @@
     <div class="container-fluid bg-white sticky-top">
         <div class="container">
             <nav class="navbar navbar-expand-lg bg-white navbar-light py-2 py-lg-0">
-                <a href="index.html" class="navbar-brand">
+                <a href="index.php" class="navbar-brand">
                     <img class="img-fluid" src="img/logo2.jpg" alt="Logo" style="margin-top: -50px;">
                 </a>
                 <button type="button" class="navbar-toggler ms-auto me-0" data-bs-toggle="collapse"
@@ -55,12 +55,12 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto">
-                        <a href="index.html" class="nav-item nav-link active">Home</a>
-                        <a href="index.html#about" class="nav-item nav-link">About</a>
-                        <a href="index.html#social" class="nav-item nav-link">Social Activity</a>
+                        <a href="index.php" class="nav-item nav-link active">Home</a>
+                        <a href="index.php#about" class="nav-item nav-link">About</a>
+                        <a href="index.php#social" class="nav-item nav-link">Social Activity</a>
                         <a href="gallery.php" class="nav-item nav-link">Gallery</a>
-                        <a href="index.html#donation" class="nav-item nav-link">Donation</a>
-                        <a href="index.html#contact" class="nav-item nav-link">Contact</a>
+                        <a href="index.php#donation" class="nav-item nav-link">Donation</a>
+                        <a href="index.php#contact" class="nav-item nav-link">Contact</a>
                     </div>
                 </div>
             </nav>
