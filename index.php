@@ -46,7 +46,7 @@
     <div class="container-fluid bg-white sticky-top">
         <div class="container">
             <nav class="navbar navbar-expand-lg bg-white navbar-light py-2 py-lg-0">
-                <a href="index.html" class="navbar-brand">
+                <a href="index.php" class="navbar-brand">
                     <img class="img-fluid" src="img/logo.png" alt="Logo" style="max-width:70% ;">
                 </a>
                 <button type="button" class="navbar-toggler ms-auto me-0" data-bs-toggle="collapse"
@@ -55,7 +55,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto">
-                        <a href="index.html" class="nav-item nav-link active">Home</a>
+                        <a href="index.php" class="nav-item nav-link active">Home</a>
                         <a href="#about" class="nav-item nav-link">About</a>
                         <a href="#social" class="nav-item nav-link">Social Activity</a>
                         <a href="gallery.php" class="nav-item nav-link">Gallery</a>
@@ -429,11 +429,11 @@
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <h4 class="text-primary mb-4">Quick Links</h4>
-                    <a class="btn btn-link" href="#about">About Us</a>
-                    <a class="btn btn-link" href="#donation">Donation</a>
-                    <a class="btn btn-link" href="#gallery">Gallery</a>
-                    <a class="btn btn-link" href="#social">Social Activity</a>
-                    <a class="btn btn-link" href="#contact">Contact</a>
+                    <a class="btn btn-link" href="index.php#about">About Us</a>
+                    <a class="btn btn-link" href="index.php#donation">Donation</a>
+                    <a class="btn btn-link" href="gallery.php">Gallery</a>
+                    <a class="btn btn-link" href="index.php#social">Social Activity</a>
+                    <a class="btn btn-link" href="index.php#contact">Contact</a>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <iframe
