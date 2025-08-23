@@ -120,7 +120,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         include 'dbconfig.php';
 
         // Fetch images grouped by alt_text (occasion)
-        $sql = "SELECT id, alt_text, image_path FROM gallery_images ORDER BY alt_text";
+        $sql = "SELECT id, alt_text, image_path FROM gallery_images ORDER BY uploaded_at DESC";
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {
