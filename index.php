@@ -81,7 +81,10 @@
                     <img class="d-block mx-auto img-fluid" src="img/poster2.jpg" alt="Image" width="1200px">
                 </div>
                 <div class="carousel-item">
-                    <img class="w-100" src="img/poster3.jpg" alt="Image">
+                    <img class="w-100" src="img/poster3.jpeg" alt="Image">
+                </div>
+                  <div class="carousel-item">
+                    <img class="d-block mx-auto img-fluid" src="img/poster4.jpeg" alt="Image" width="1200px">
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#header-carousel" data-bs-slide="prev">
