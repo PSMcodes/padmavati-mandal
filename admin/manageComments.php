@@ -13,7 +13,7 @@ include 'dbconfig.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Get the username from the session and testimonial text from the POST request
-    $user_id = $_SESSION['username'];  // Username from session (since the user is logged in)
+    $user_id = $_POST['username'];  // Username from session (since the user is logged in)
     $testimonial_text = $_POST['comment'];  // Get the testimonial text from the form submission
 
     
