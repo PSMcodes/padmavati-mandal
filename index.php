@@ -458,7 +458,7 @@
                     &copy; <a class="fw-medium" href="#">Padmavati Mitra Mandal</a>, All Right Reserved.
                 </div>
                 <div class="col-md-6 text-center text-md-end">
-                    Designed By <a class="fw-medium" href="https://psmcodes.com">PSMcodes</a>
+                    Designed By <a class="fw-medium" href="https://psmcodes.in">PSMcodes</a>
                 </div>
             </div>
         </div>
