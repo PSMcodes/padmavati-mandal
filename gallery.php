@@ -150,7 +150,7 @@
                 $sql = "SELECT id, alt_text, video_path FROM gallery_videos ORDER BY uploaded_at DESC";
                 $result = $conn->query($sql);
 
-                if ($result->num_rows > 0) {
+                if ($result !== false && $result->num_rows > 0) {
                     ?>
                     <div class="section-title text-center mx-auto wow fadeInUp" data-wow-delay="0.1s"
                         style="max-width: 500px;">
