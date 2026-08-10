@@ -214,11 +214,11 @@
                             class="fa fa-envelope text-primary me-3"></i>padmavatimitramandal8@gmail.com</a>
                     <div class="d-flex pt-3">
 
-                        <a class="btn btn-square btn-primary rounded-circle me-2"
+                        <a class="btn btn-sm-square btn-primary rounded-circle me-2"
                             href="https://www.facebook.com/share/YWsaTT2zdqiDBCCm/?mibextid=LQQJ4d"><i
                                 class="fab fa-facebook-f"></i></a>
 
-                        <a class="btn btn-square btn-primary rounded-circle me-2"
+                        <a class="btn btn-sm-square btn-primary rounded-circle me-2"
                             href="https://www.instagram.com/padmavatichi_aai_bhavani"><i
                                 class="fab fa-instagram"></i></a>
                     </div>
