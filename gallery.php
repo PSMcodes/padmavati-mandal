@@ -122,15 +122,18 @@
 
                                 if ($result->num_rows > 0) {
                                     $current_alt_text = '';
+                                    $group_open = false;
                                     while ($row = $result->fetch_assoc()) {
-                                        if ($current_alt_text !== $row['alt_text']) {
-                                            if ($current_alt_text !== '') {
-                                                echo "</div></div>"; // Close previous group
-                                            }
+                                        if ($group_open && $current_alt_text !== $row['alt_text']) {
+                                            echo "</div></div>"; // Close previous group
+                                            $group_open = false;
+                                        }
+                                        if (!$group_open) {
                                             $current_alt_text = $row['alt_text'];
                                             echo "<div class='col-md-12'>";
                                             echo "<h4 class='text-center mt-5'>Occasion: " . htmlspecialchars($current_alt_text) . "</h4>";
                                             echo "<div class='row'>";
+                                            $group_open = true;
                                         }
 
                                         $id = $row['id'];
@@ -142,7 +145,9 @@
                                                 />
                                             </div>';
                                     }
-                                    echo "</div></div>"; // Close last group
+                                    if ($group_open) {
+                                        echo "</div></div>"; // Close last group
+                                    }
                                 } else {
                                     echo "<div class='col-md-12 text-center'><p>No images found.</p></div>";
                                 }
@@ -161,15 +166,18 @@
 
                                 if ($result !== false && $result->num_rows > 0) {
                                     $current_alt_text = '';
+                                    $group_open = false;
                                     while ($row = $result->fetch_assoc()) {
-                                        if ($current_alt_text !== $row['alt_text']) {
-                                            if ($current_alt_text !== '') {
-                                                echo "</div></div>"; // Close previous group
-                                            }
+                                        if ($group_open && $current_alt_text !== $row['alt_text']) {
+                                            echo "</div></div>"; // Close previous group
+                                            $group_open = false;
+                                        }
+                                        if (!$group_open) {
                                             $current_alt_text = $row['alt_text'];
                                             echo "<div class='col-md-12'>";
                                             echo "<h4 class='text-center mt-5'>Occasion: " . htmlspecialchars($current_alt_text) . "</h4>";
                                             echo "<div class='row'>";
+                                            $group_open = true;
                                         }
 
                                         $video = $row['video_path'];
@@ -179,7 +187,9 @@
                                                     controls preload="metadata"></video>
                                             </div>';
                                     }
-                                    echo "</div></div>"; // Close last group
+                                    if ($group_open) {
+                                        echo "</div></div>"; // Close last group
+                                    }
                                 } else {
                                     echo "<div class='col-md-12 text-center'><p>No videos found.</p></div>";
                                 }
