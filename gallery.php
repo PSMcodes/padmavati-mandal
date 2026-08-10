@@ -206,27 +206,30 @@
                     <h4 class="text-primary mb-4">Our Office</h4>
                     <p class="mb-2"><i class="fa fa-map-marker-alt text-primary me-3"></i>Padmavati Nagar
                         Bolinj, Virar West, Virar, Maharashtra 401303</p>
-                    <p class="mb-2"><i class="fa fa-phone-alt text-primary me-3"></i>+91 98202 91555</p>
-                    <p class="mb-2"><i class="fa fa-phone-alt text-primary me-3"></i>+91 80804 95564</p>
-                    <p class="mb-2"><i class="fa fa-envelope text-primary me-3"></i>info@example.com</p>
+                    <a href="tel:+919820291555" class="mb-2 d-block"><i
+                            class="fa fa-phone-alt text-primary me-3"></i>+91 98202 91555</a>
+                    <a href="tel:+918080495564" class="mb-2 d-block"><i
+                            class="fa fa-phone-alt text-primary me-3"></i>+91 80804 95564</a>
+                    <a href="mailto:padmavatimitramandal8@gmail.com" class="mb-2"><i
+                            class="fa fa-envelope text-primary me-3"></i>padmavatimitramandal8@gmail.com</a>
                     <div class="d-flex pt-3">
-                        <a class="btn btn-square btn-primary rounded-circle me-2" href=""><i
-                                class="fab fa-twitter"></i></a>
-                        <a class="btn btn-square btn-primary rounded-circle me-2" href=""><i
+
+                        <a class="btn btn-square btn-primary rounded-circle me-2"
+                            href="https://www.facebook.com/share/YWsaTT2zdqiDBCCm/?mibextid=LQQJ4d"><i
                                 class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-square btn-primary rounded-circle me-2" href=""><i
-                                class="fab fa-youtube"></i></a>
-                        <a class="btn btn-square btn-primary rounded-circle me-2" href=""><i
-                                class="fab fa-linkedin-in"></i></a>
+
+                        <a class="btn btn-square btn-primary rounded-circle me-2"
+                            href="https://www.instagram.com/padmavatichi_aai_bhavani"><i
+                                class="fab fa-instagram"></i></a>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <h4 class="text-primary mb-4">Quick Links</h4>
-                    <a class="btn btn-link" href="">About Us</a>
-                    <a class="btn btn-link" href="">Donation</a>
-                    <a class="btn btn-link" href="">Gallery</a>
-                    <a class="btn btn-link" href="">Social Activity</a>
-                    <a class="btn btn-link" href="">Support</a>
+                    <a class="btn btn-link" href="index.php#about">About Us</a>
+                    <a class="btn btn-link" href="index.php#donation">Donation</a>
+                    <a class="btn btn-link" href="gallery.php">Gallery</a>
+                    <a class="btn btn-link" href="index.php#social">Social Activity</a>
+                    <a class="btn btn-link" href="index.php#contact">Contact</a>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <iframe
@@ -248,7 +251,7 @@
                     &copy; <a class="fw-medium" href="#">Padmavati Mitra Mandal</a>, All Right Reserved.
                 </div>
                 <div class="col-md-6 text-center text-md-end">
-                    Designed By <a class="fw-medium" href="https://psmcodes.com">PSMcodes</a>
+                    Designed By <a class="fw-medium" href="https://psmcodes.in">PSMcodes</a>
                 </div>
             </div>
         </div>
@@ -271,6 +274,40 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+
+    <script>
+        // Robust Photos/Videos tab controller (works even if Bootstrap's tab
+        // plugin fails to initialise, and normalises the initial visible pane)
+        (function () {
+            var tablist = document.getElementById('galleryTabs');
+            if (!tablist) return;
+            var buttons = Array.prototype.slice.call(tablist.querySelectorAll('[data-bs-toggle="tab"]'));
+            var content = document.getElementById('galleryTabsContent');
+            var panes = content ? Array.prototype.slice.call(content.querySelectorAll('.tab-pane')) : [];
+            if (!buttons.length || !panes.length) return;
+
+            function activate(btn) {
+                var target = btn.getAttribute('data-bs-target');
+                buttons.forEach(function (b) {
+                    var on = b === btn;
+                    b.classList.toggle('active', on);
+                    b.setAttribute('aria-selected', on ? 'true' : 'false');
+                });
+                panes.forEach(function (p) {
+                    var on = target === '#' + p.id;
+                    p.classList.toggle('active', on);
+                    p.classList.toggle('show', on);
+                });
+            }
+
+            buttons.forEach(function (btn) {
+                btn.addEventListener('click', function () { activate(btn); });
+            });
+
+            var activeBtn = tablist.querySelector('.nav-link.active');
+            if (activeBtn) activate(activeBtn);
+        })();
+    </script>
 </body>
 
 </html>
