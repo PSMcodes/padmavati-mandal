@@ -141,6 +141,51 @@
                     ?>
                 </div>
                 <!-- Gallery -->
+
+                <!-- Videos -->
+                <?php
+                include 'admin/dbconfig.php';
+
+                // Fetch videos grouped by alt_text (occasion)
+                $sql = "SELECT id, alt_text, video_path FROM gallery_videos ORDER BY uploaded_at DESC";
+                $result = $conn->query($sql);
+
+                if ($result->num_rows > 0) {
+                    ?>
+                    <div class="section-title text-center mx-auto wow fadeInUp" data-wow-delay="0.1s"
+                        style="max-width: 500px;">
+                        <p class="fs-5 fw-medium fst-italic text-primary">Videos</p>
+                        <h1 class="display-6">व्हिडिओ गॅलरी</h1>
+                    </div>
+                    <div class="row mt-5">
+                    <?php
+                    $current_alt_text = '';
+                    while ($row = $result->fetch_assoc()) {
+                        if ($current_alt_text !== $row['alt_text']) {
+                            if ($current_alt_text !== '') {
+                                echo "</div></div>"; // Close previous group
+                            }
+                            $current_alt_text = $row['alt_text'];
+                            echo "<div class='col-md-12'>";
+                            echo "<h4 class='text-center mt-5'>Occasion: " . htmlspecialchars($current_alt_text) . "</h4>";
+                            echo "<div class='row'>";
+                        }
+
+                        $video = $row['video_path'];
+                        echo '<div class="col-lg-6 col-md-12 mb-4">
+                                <video src="./admin/' . htmlspecialchars($video) . '"
+                                    class="w-100 shadow-1-strong rounded"
+                                    controls preload="metadata"></video>
+                            </div>';
+                    }
+                    echo "</div></div>"; // Close last group
+                    echo "</div>";
+                }
+
+                // Close the database connection
+                $conn->close();
+                ?>
+                <!-- Videos -->
             </div>
         </div>
     </div>

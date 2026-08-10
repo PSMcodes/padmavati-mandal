@@ -182,6 +182,19 @@ INSERT INTO `gallery_images` (`id`, `image_path`, `alt_text`, `uploaded_at`) VAL
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `gallery_videos`
+--
+
+CREATE TABLE `gallery_videos` (
+  `id` int(11) NOT NULL,
+  `video_path` varchar(255) NOT NULL,
+  `alt_text` varchar(255) DEFAULT NULL,
+  `uploaded_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `testimonials`
 --
 
@@ -224,6 +237,12 @@ ALTER TABLE `gallery_images`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `gallery_videos`
+--
+ALTER TABLE `gallery_videos`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `testimonials`
 --
 ALTER TABLE `testimonials`
@@ -247,6 +266,12 @@ ALTER TABLE `users`
 --
 ALTER TABLE `gallery_images`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=170;
+
+--
+-- AUTO_INCREMENT for table `gallery_videos`
+--
+ALTER TABLE `gallery_videos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `testimonials`
