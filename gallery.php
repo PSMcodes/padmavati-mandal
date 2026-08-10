@@ -96,96 +96,102 @@
                 </div>
                 <!-- Gallery -->
                 <div class="row mt-5">
-                    <?php
-                    // Include database configuration
-                    include 'admin/dbconfig.php';
+                    <div class="col-md-12">
+                        <ul class="nav nav-tabs nav-justified" id="galleryTabs" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="photos-tab" data-bs-toggle="tab"
+                                    data-bs-target="#photos" type="button" role="tab" aria-controls="photos"
+                                    aria-selected="true">Photos</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="videos-tab" data-bs-toggle="tab"
+                                    data-bs-target="#videos" type="button" role="tab" aria-controls="videos"
+                                    aria-selected="false">Videos</button>
+                            </li>
+                        </ul>
+                        <div class="tab-content pt-4" id="galleryTabsContent">
+                            <div class="tab-pane fade show active" id="photos" role="tabpanel"
+                                aria-labelledby="photos-tab">
+                                <?php
+                                // Include database configuration
+                                include 'admin/dbconfig.php';
 
-                    // Fetch images grouped by alt_text (occasion)
-                    $sql = "SELECT id, alt_text, image_path FROM gallery_images ORDER BY uploaded_at DESC";
-                    $result = $conn->query($sql);
+                                // Fetch images grouped by alt_text (occasion)
+                                $sql = "SELECT id, alt_text, image_path FROM gallery_images ORDER BY uploaded_at DESC";
+                                $result = $conn->query($sql);
 
-                    if ($result->num_rows > 0) {
-                        $current_alt_text = '';
-                        while ($row = $result->fetch_assoc()) {
-                            if ($current_alt_text !== $row['alt_text']) {
-                                if ($current_alt_text !== '') {
-                                    echo "</div></div>"; // Close previous group
+                                if ($result->num_rows > 0) {
+                                    $current_alt_text = '';
+                                    while ($row = $result->fetch_assoc()) {
+                                        if ($current_alt_text !== $row['alt_text']) {
+                                            if ($current_alt_text !== '') {
+                                                echo "</div></div>"; // Close previous group
+                                            }
+                                            $current_alt_text = $row['alt_text'];
+                                            echo "<div class='col-md-12'>";
+                                            echo "<h4 class='text-center mt-5'>Occasion: " . htmlspecialchars($current_alt_text) . "</h4>";
+                                            echo "<div class='row'>";
+                                        }
+
+                                        $id = $row['id'];
+                                        $image = $row['image_path'];
+                                        echo '<div class="col-lg-3 col-md-12 mb-4 mb-lg-0">
+                                                <img src="./admin/' . htmlspecialchars($image) . '"
+                                                class="w-100 shadow-1-strong rounded mb-4"
+                                                alt="' . htmlspecialchars($current_alt_text) . '"
+                                                />
+                                            </div>';
+                                    }
+                                    echo "</div></div>"; // Close last group
+                                } else {
+                                    echo "<div class='col-md-12 text-center'><p>No images found.</p></div>";
                                 }
-                                $current_alt_text = $row['alt_text'];
-                                echo "<div class='col-md-12'>";
-                                echo "<h4 class='text-center mt-5'>Occasion: " . htmlspecialchars($current_alt_text) . "</h4>";
-                                echo "<div class='row'>";
-                            }
 
-                            $id = $row['id'];
-                            $image = $row['image_path'];
-                            // echo '<div class="row">';
-                            // echo '<div class="col-lg-4 col-md-12 mb-4 mb-lg-0">';
-                            // echo " class='w-100 shadow-1-strong rounded mb-4' alt='" . htmlspecialchars($current_alt_text) . "'>";
-                            // echo "</div>";
-                            // echo "</div>";
-                            echo '<div class="col-lg-3 col-md-12 mb-4 mb-lg-0">
-                                    <img src="./admin/' . htmlspecialchars($image) . '"
-                                    class="w-100 shadow-1-strong rounded mb-4"
-                                    alt="' . htmlspecialchars($current_alt_text) . '"
-                                    />
-                                </div>';
-                        }
-                        echo "</div></div>"; // Close last group
-                    } else {
-                        echo "<div class='col-md-12 text-center'><p>No images found.</p></div>";
-                    }
+                                // Close the database connection
+                                $conn->close();
+                                ?>
+                            </div>
+                            <div class="tab-pane fade" id="videos" role="tabpanel" aria-labelledby="videos-tab">
+                                <?php
+                                include 'admin/dbconfig.php';
 
-                    // Close the database connection
-                    $conn->close();
-                    ?>
+                                // Fetch videos grouped by alt_text (occasion)
+                                $sql = "SELECT id, alt_text, video_path FROM gallery_videos ORDER BY uploaded_at DESC";
+                                $result = $conn->query($sql);
+
+                                if ($result !== false && $result->num_rows > 0) {
+                                    $current_alt_text = '';
+                                    while ($row = $result->fetch_assoc()) {
+                                        if ($current_alt_text !== $row['alt_text']) {
+                                            if ($current_alt_text !== '') {
+                                                echo "</div></div>"; // Close previous group
+                                            }
+                                            $current_alt_text = $row['alt_text'];
+                                            echo "<div class='col-md-12'>";
+                                            echo "<h4 class='text-center mt-5'>Occasion: " . htmlspecialchars($current_alt_text) . "</h4>";
+                                            echo "<div class='row'>";
+                                        }
+
+                                        $video = $row['video_path'];
+                                        echo '<div class="col-lg-6 col-md-12 mb-4">
+                                                <video src="./admin/' . htmlspecialchars($video) . '"
+                                                    class="w-100 shadow-1-strong rounded"
+                                                    controls preload="metadata"></video>
+                                            </div>';
+                                    }
+                                    echo "</div></div>"; // Close last group
+                                } else {
+                                    echo "<div class='col-md-12 text-center'><p>No videos found.</p></div>";
+                                }
+
+                                // Close the database connection
+                                $conn->close();
+                                ?>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <!-- Gallery -->
-
-                <!-- Videos -->
-                <?php
-                include 'admin/dbconfig.php';
-
-                // Fetch videos grouped by alt_text (occasion)
-                $sql = "SELECT id, alt_text, video_path FROM gallery_videos ORDER BY uploaded_at DESC";
-                $result = $conn->query($sql);
-
-                if ($result !== false && $result->num_rows > 0) {
-                    ?>
-                    <div class="section-title text-center mx-auto wow fadeInUp" data-wow-delay="0.1s"
-                        style="max-width: 500px;">
-                        <p class="fs-5 fw-medium fst-italic text-primary">Videos</p>
-                        <h1 class="display-6">व्हिडिओ गॅलरी</h1>
-                    </div>
-                    <div class="row mt-5">
-                    <?php
-                    $current_alt_text = '';
-                    while ($row = $result->fetch_assoc()) {
-                        if ($current_alt_text !== $row['alt_text']) {
-                            if ($current_alt_text !== '') {
-                                echo "</div></div>"; // Close previous group
-                            }
-                            $current_alt_text = $row['alt_text'];
-                            echo "<div class='col-md-12'>";
-                            echo "<h4 class='text-center mt-5'>Occasion: " . htmlspecialchars($current_alt_text) . "</h4>";
-                            echo "<div class='row'>";
-                        }
-
-                        $video = $row['video_path'];
-                        echo '<div class="col-lg-6 col-md-12 mb-4">
-                                <video src="./admin/' . htmlspecialchars($video) . '"
-                                    class="w-100 shadow-1-strong rounded"
-                                    controls preload="metadata"></video>
-                            </div>';
-                    }
-                    echo "</div></div>"; // Close last group
-                    echo "</div>";
-                }
-
-                // Close the database connection
-                $conn->close();
-                ?>
-                <!-- Videos -->
             </div>
         </div>
     </div>
