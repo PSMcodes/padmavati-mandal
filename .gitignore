@@ -1,0 +1,7 @@
+# Uploaded video files (can be up to 200 MB each)
+admin/uploads/*.mp4
+admin/uploads/*.webm
+admin/uploads/*.mov
+admin/uploads/*.avi
+admin/uploads/*.mkv
+admin/uploads/*.wmv
